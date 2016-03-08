@@ -3,6 +3,12 @@
 
 @import 'timer';
 
+@mixin small() {
+  @media (max-width: 960px) {
+    @content;
+  }
+}
+
 html {
   overflow: hidden;
   font-family: 'Roboto', sans-serif;
@@ -39,6 +45,10 @@ main {
   &:hover {
     cursor: pointer;
     opacity: 0.5;
+  }
+
+  @include small {
+    display: none;
   }
   
 }

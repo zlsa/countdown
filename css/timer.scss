@@ -1,4 +1,11 @@
 
+@mixin small() {
+  @media (max-width: 960px) {
+    @content;
+  }
+}
+
+
 $height: 8vw;
 $anim: 0.3s;
 
@@ -10,18 +17,25 @@ $date-height: 14px;
 
   .time-name {
     opacity: 0.5;
+    
     font-size: $date-height;
     font-weight: 900;
     text-transform: uppercase;
+    
+    padding: 0.5em;
   }
   
   .time-date {
     opacity: 0.5;
+    
     font-size: $date-height;
     text-transform: uppercase;
+    
     letter-spacing: 0.2em;
     word-spacing: 0.3em;
     font-weight: 900;
+
+    padding: 0.5em;
 
     .time, .timezone {
       margin-left: 1em;
@@ -90,6 +104,39 @@ $date-height: 14px;
       
     }
 
+    @include small {
+      display: flex;
+      flex-direction: column;
+
+      align-items: center;
+
+      font-size: 12vh;
+
+      .has-value {
+        height: 12vh;
+      }
+
+    };
+
   }
   
+  @include small {
+
+    .time-name {
+      position: absolute;
+      top: 18px;
+      left: 0;
+      right: 0;
+      text-align: center;
+    }
+    
+    .time-date {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+  };
+
 }
+

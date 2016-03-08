@@ -37,7 +37,7 @@ var Time = Events.extend(function(base) {
         root.removeClass('hidden');
       }
         
-      if(!this.animation) {
+      if(!this.animation || $(window).width() < 960) {
         root.find('.value').removeClass('to-bottom to-top');
         root.find('.value-1').addClass('to-bottom');
         root.find('.value-0').text(new_value);
