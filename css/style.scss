@@ -20,3 +20,25 @@ main {
   align-items: center;
   justify-content: center;
 }
+
+#toggle-animation {
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  
+  position: absolute;
+  top: 0;
+  right: 0;
+  
+  padding: 24px;
+
+  opacity: 0.2;
+
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
+  
+}

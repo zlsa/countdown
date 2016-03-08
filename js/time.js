@@ -28,13 +28,22 @@ var Time = Events.extend(function(base) {
     },
 
     update_value: function(root, value, never_hide) {
+      
+      var new_value = lpad(Math.abs(value), 2);
+      
+      if(!value && !never_hide) {
+        root.addClass('hidden');
+      } else {
+        root.removeClass('hidden');
+      }
+        
       if(!this.animation) {
+        root.find('.value').removeClass('to-bottom to-top');
         root.find('.value-1').addClass('to-bottom');
-        root.find('.value-0').text(value);
+        root.find('.value-0').text(new_value);
         return;
       }
 
-      var new_value = lpad(Math.abs(value), 2);
       var current = root.attr('data-current');
       var current_value = root.find('.value-' + current).text();
 
@@ -56,12 +65,6 @@ var Time = Events.extend(function(base) {
         root.find('.value-' + current).text(new_value);
       }
 
-      if(!value && !never_hide) {
-        root.addClass('hidden');
-      } else {
-        root.removeClass('hidden');
-      }
-        
     },
     
     update_timer: function(root) {

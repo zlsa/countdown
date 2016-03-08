@@ -14,7 +14,15 @@ var Main = Events.extend(function(base) {
       this.time.from_url(location.href);
 
       this.update_time();
+
+      var time = this.time;
       
+      $('#toggle-animation').click(function() {
+        time.animation = !time.animation;
+        
+        if(time.animation) $(this).text('Disable animation');
+        else               $(this).text('Enable animation');
+      });
     },
 
     init_extra_values: function() {
