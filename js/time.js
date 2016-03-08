@@ -22,7 +22,16 @@ var Time = Events.extend(function(base) {
       if('unix' in args) this.time = moment(args.unix * 1000);
 
       if(hash) {
-        this.time = moment(parseInt(hash.substr(1)) * 1000);
+        var split = null;
+        if(hash.indexOf(':') >= 0)
+          split = hash.indexOf(':');
+
+        if(split) {
+          this.name = hash.substr(1, split - 1);
+          this.time = moment(parseInt(hash.substr(split + 1)) * 1000);
+        } else {
+          this.time = moment(parseInt(hash.substr(1, split)) * 1000);
+        }
       }
       
     },
