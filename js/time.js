@@ -16,9 +16,15 @@ var Time = Events.extend(function(base) {
 
     from_url: function(url) {
       var args = URI(url).search(true);
+      var hash = URI(url).hash();
 
       if('name' in args) this.name = args.name;
       if('unix' in args) this.time = moment(args.unix * 1000);
+
+      if(hash) {
+        this.time = moment(parseInt(hash.substr(1)) * 1000);
+      }
+      
     },
     
     offset: function(time) {
