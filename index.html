@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Countdown</title>
+    
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:900,400,100" />
+    
+    <script src="js/libs/jquery.min.js"></script>
+    <script src="js/libs/moment.min.js"></script>
+    <script src="js/libs/fiber.min.js"></script>
+    
+    <script src="js/util.js"></script>
+    
+    <script src="js/events.js"></script>
+    
+    <script src="js/loader.js"></script>
+    
+    <script src="js/time.js"></script>
+    
+    <script src="js/main.js"></script>
+
+  </head>
+  <body>
+
+    <main>
+      <section class="timer" id="timer">
+        <h1 class="time-name">-</h1>
+        <div class="countdown">
+          <span class="time-prefix">T</span>
+          <span class="time-sign">-</span>
+          <span class="has-value time-days"><span class="value">&ndash;</span><span class="unit">d</span></span>
+          <span class="has-value time-hours"><span class="value">&ndash;</span><span class="unit">h</span></span>
+          <span class="has-value time-minutes"><span class="value">&ndash;</span><span class="unit">m</span></span>
+          <span class="has-value time-seconds"><span class="value">&ndash;</span><span class="unit">s</span></span>
+        </div>
+        <div class="time-date">
+          <span class="date">-</span>
+          <span class="time">-</span>
+          <span class="timezone">(local)</span>
+        </div>
+      </section>
+    </main>
+
+  </body>
+</html>

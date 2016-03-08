@@ -1,0 +1,78 @@
+* {
+  background: none;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  color: inherit;
+  text-decoration: inherit;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+.timer {
+  text-align: center; }
+  .timer .time-name {
+    opacity: 0.5;
+    font-size: 24px;
+    text-transform: uppercase; }
+  .timer .time-date {
+    opacity: 0.5;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    word-spacing: 0.3em;
+    font-weight: 900; }
+    .timer .time-date .time, .timer .time-date .timezone {
+      margin-left: 1em; }
+  .timer .countdown {
+    font-weight: 100;
+    font-size: 8vw; }
+    .timer .countdown * {
+      display: inline-block; }
+    .timer .countdown .has-value {
+      width: 1.5em;
+      position: relative;
+      height: 8vw; }
+      .timer .countdown .has-value .value {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        transform-origin: 0 0; }
+        .timer .countdown .has-value .value.to-top, .timer .countdown .has-value .value.to-bottom {
+          opacity: 0; }
+        .timer .countdown .has-value .value.to-top {
+          transform: translateY(-50%); }
+        .timer .countdown .has-value .value.to-bottom {
+          transform: translateY(10%); }
+      .timer .countdown .has-value .unit {
+        font-size: 0.25em;
+        font-weight: 900;
+        text-transform: uppercase;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        opacity: 0.5;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none; }
+
+html {
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+  background-color: #404040;
+  color: #fff; }
+
+html, body, main {
+  width: 100%;
+  height: 100%; }
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center; }

@@ -1,0 +1,85 @@
+
+$height: 8vw;
+$anim: 0.3s;
+
+.timer {
+
+  text-align: center;
+
+  .time-name {
+    opacity: 0.5;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+  
+  .time-date {
+    opacity: 0.5;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    word-spacing: 0.3em;
+    font-weight: 900;
+
+    .time, .timezone {
+      margin-left: 1em;
+    }
+    
+  }
+  
+  .countdown {
+    font-weight: 100;
+    font-size: $height;
+
+    * {
+      display: inline-block;
+    }
+
+    .has-value {
+      width: 1.5em;
+      position: relative;
+      height: $height;
+      
+      .value {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        transition: transform $anim ease, opacity $anim ease;
+        transform-origin: 0 0;
+        
+        &.to-top,
+        &.to-bottom {
+          opacity: 0;
+        }
+        
+        &.to-top {
+          transform: translateY(-50%);
+        }
+
+        &.to-bottom {
+          transform: translateY(10%);
+        }
+
+      }
+      
+      .unit {
+        font-size: 0.25em;
+        font-weight: 900;
+        text-transform: uppercase;
+        
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        
+        opacity: 0.5;
+
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+      
+    }
+
+  }
+  
+}
