@@ -2,19 +2,22 @@
 $height: 8vw;
 $anim: 0.3s;
 
+$date-height: 14px;
+
 .timer {
 
   text-align: center;
 
   .time-name {
     opacity: 0.5;
-    font-size: 24px;
+    font-size: $date-height;
+    font-weight: 900;
     text-transform: uppercase;
   }
   
   .time-date {
     opacity: 0.5;
-    font-size: 14px;
+    font-size: $date-height;
     text-transform: uppercase;
     letter-spacing: 0.2em;
     word-spacing: 0.3em;
@@ -38,11 +41,18 @@ $anim: 0.3s;
       width: 1.5em;
       position: relative;
       height: $height;
+
+      &.hidden {
+        display: none;
+      }
       
       .value {
+
+        text-align: right;
+
         position: absolute;
         top: 0;
-        left: 0;
+        right: 0.2em;
 
         transition: transform $anim ease, opacity $anim ease;
         transform-origin: 0 0;
@@ -63,13 +73,13 @@ $anim: 0.3s;
       }
       
       .unit {
-        font-size: 0.25em;
+        font-size: 0.2em;
         font-weight: 900;
         text-transform: uppercase;
         
         position: absolute;
         right: 0;
-        bottom: 0;
+        bottom: 0.1em;
         
         opacity: 0.5;
 

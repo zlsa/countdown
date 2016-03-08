@@ -9,7 +9,9 @@ var Main = Events.extend(function(base) {
 
       this.init_extra_values();
 
-      this.time = new Time(1459468800, 'SpaceX CRS-8');
+      this.time = new Time();
+
+      this.time.from_url(location.href);
 
       this.update_time();
       

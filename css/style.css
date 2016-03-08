@@ -18,7 +18,8 @@
   text-align: center; }
   .timer .time-name {
     opacity: 0.5;
-    font-size: 24px;
+    font-size: 14px;
+    font-weight: 900;
     text-transform: uppercase; }
   .timer .time-date {
     opacity: 0.5;
@@ -38,10 +39,13 @@
       width: 1.5em;
       position: relative;
       height: 8vw; }
+      .timer .countdown .has-value.hidden {
+        display: none; }
       .timer .countdown .has-value .value {
+        text-align: right;
         position: absolute;
         top: 0;
-        left: 0;
+        right: 0.2em;
         transition: transform 0.3s ease, opacity 0.3s ease;
         transform-origin: 0 0; }
         .timer .countdown .has-value .value.to-top, .timer .countdown .has-value .value.to-bottom {
@@ -51,12 +55,12 @@
         .timer .countdown .has-value .value.to-bottom {
           transform: translateY(10%); }
       .timer .countdown .has-value .unit {
-        font-size: 0.25em;
+        font-size: 0.2em;
         font-weight: 900;
         text-transform: uppercase;
         position: absolute;
         right: 0;
-        bottom: 0;
+        bottom: 0.1em;
         opacity: 0.5;
         -webkit-user-select: none;
         -moz-user-select: none;

@@ -10,27 +10,35 @@ var Time = Events.extend(function(base) {
       base.init.apply(this, arguments);
 
       this.animation = true;
-      this.name = name;
-      this.time = moment(time * 1000);
+      this.name = name || 'Countdown';
+      this.time = moment((time || Date.now() / 1000) * 1000);
     },
 
+    from_url: function(url) {
+      var args = URI(url).search(true);
+
+      if('name' in args) this.name = args.name;
+      if('unix' in args) this.time = moment(args.unix * 1000);
+    },
+    
     offset: function(time) {
       if(!time) time = moment();
 
       return moment.duration(this.time.diff(time));
     },
 
-    update_value: function(root, value) {
+    update_value: function(root, value, never_hide) {
       if(!this.animation) {
         root.find('.value-1').addClass('to-bottom');
         root.find('.value-0').text(value);
         return;
       }
-      
+
+      var new_value = lpad(Math.abs(value), 2);
       var current = root.attr('data-current');
       var current_value = root.find('.value-' + current).text();
 
-      if(current_value != value) {
+      if(current_value != new_value) {
         
         root.find('.value-' + current).removeClass('to-top to-bottom');
         root.find('.value-' + current).addClass('to-top');
@@ -45,8 +53,15 @@ var Time = Events.extend(function(base) {
         root.attr('data-current', current);
 
         root.find('.value-' + current).removeClass('to-top to-bottom');
-        root.find('.value-' + current).text(value);
+        root.find('.value-' + current).text(new_value);
       }
+
+      if(!value && !never_hide) {
+        root.addClass('hidden');
+      } else {
+        root.removeClass('hidden');
+      }
+        
     },
     
     update_timer: function(root) {
@@ -57,20 +72,24 @@ var Time = Events.extend(function(base) {
       
       var offset = this.offset();
 
-      var days    = Math.floor(Math.abs(offset.asDays()));
-      var hours   = lpad(Math.abs(offset.hours()), 2);
-      var minutes = lpad(Math.abs(offset.minutes()), 2);
-      var seconds = lpad(Math.abs(offset.seconds()), 2);
+      var years   = offset.years();
+      var months  = offset.months();
+      var days    = offset.days();
+      var hours   = offset.hours();
+      var minutes = offset.minutes();
+      var seconds = offset.seconds();
 
       if(offset.asSeconds() > 0)
         root.find('.time-sign').text('-');
       else
         root.find('.time-sign').text('+');
 
+      this.update_value(root.find('.time-years'), years);
+      this.update_value(root.find('.time-months'), months);
       this.update_value(root.find('.time-days'), days);
       this.update_value(root.find('.time-hours'), hours);
-      this.update_value(root.find('.time-minutes'), minutes);
-      this.update_value(root.find('.time-seconds'), seconds);
+      this.update_value(root.find('.time-minutes'), minutes, true);
+      this.update_value(root.find('.time-seconds'), seconds, true);
 
 //      root.find('.time-days    .value').text(days);
 //      root.find('.time-hours   .value').text(hours);
